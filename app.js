@@ -6,6 +6,7 @@ require('dotenv').config()
 const app = express();
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
+const PORT = process.env.PORT || 3000
 
 // configure cloudinary
 cloudinary.config({
@@ -42,7 +43,7 @@ app.post("/images", upload.array("pictures", 10), async (req, res) => {
       });
     }
   });
-const PORT = process.env.PORT || 3000
+
 app.listen(PORT, () => {
   console.log('Server started on port 3000.');
 });
