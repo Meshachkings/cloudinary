@@ -34,7 +34,7 @@ app.post("/images", upload.array("pictures", 10), async (req, res) => {
       );
       // await all the cloudinary upload functions in promise.all, exactly where the magic happens
       let imageResponses = await Promise.all(multiplePicturePromise);
-      res.status(200).json({ images: imageResponses[0].url });
+      res.status(200).json({ images: imageResponses });
     } catch (err) {
       res.status(500).json({
         message: err.message,
