@@ -1,6 +1,7 @@
 const express = require('express');
 const multer  = require('multer');
 const cloudinary = require('cloudinary').v2;
+require('dotenv').config()
 
 const app = express();
 app.use(express.urlencoded({extended: true}));
@@ -41,7 +42,7 @@ app.post("/images", upload.array("pictures", 10), async (req, res) => {
       });
     }
   });
-
-app.listen(3000, () => {
+const PORT = process.env.PORT || 3000
+app.listen(PORT, () => {
   console.log('Server started on port 3000.');
 });
